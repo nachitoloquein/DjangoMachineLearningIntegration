@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Predicción de Temperatura máxima</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="icon" href="{% static 'img/icon.ico' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <form action="predict" method="post">
+        {% csrf_token %}
+        <div class="form-group"> 
+            <label for="fname">Algoritmo a utilizar: </label>
+            <select class="custom-select" name="algoritmo" >
+                <option selected value="AdaBoostRegressor">Ada Boost Regressor</option>
+                <option value="ARDRegression">ARDRegression</option>
+                <option value="BaggingRegressor">Bagging Regressor</option>
+                <option value="BayesianRidge">Bayesian Ridge</option>
+                <option value="DecisionTreeRegressor">Decision Tree Regressor</option>
+                <option value="ExtraTreeRegressor">Extra Tree Regressor</option>
+                <option value="GammaRegressor">Gamma Regressor</option>
+                <option value="GradientBoostingRegressor">GradientBoostingRegressor</option>
+                <option value="HistGradientBoostingRegressor">Hist Gradient Boosting Regressor</option>
+                <option value="HuberRegressor">Huber Regressor</option>
+                <option value="Lasso">Lasso</option>
+                <option value="LinealRegression">Lineal Regression</option>
+                <option value="PassiveAggressiveRegressor">Passive Aggressive Regressor</option>
+                <option value="PoissonRegressor">Poisson Regressor</option>
+                <option value="RandomForestRegressor">Random Forest Regressor</option>
+                <option value="TweedieRegressor">Tweedie Regressor</option>
+            </select>
+        </div>
+        <div class="form-group"> 
+            <label for="fname">Temperatura 9am: </label>
+            <input type="number" min="1" max="32" name="temp9Val" value=18 class="form-control">
+        </div>
+        <div class="form-group"> 
+            <label for="fname">Presión atmosférica 3pm: </label>
+            <input type="number" min="998" max="1034" name="presion3Val" value=1003 class="form-control">
+        </div>
+        <div class="form-group"> 
+            <label for="fname">Humedad 3pm: </label>
+            <input type="number" min="7" max="90" name="humedad3Val" value=26 class="form-control">
+        </div>
+        <div class="form-group"> 
+            <label for="fname">Presión atmosférica 9am: </label>
+            <input type="number" min="1000" max="1037" name="presion9Val" value=1004 class="form-control">
+        </div>
+        <input type="submit" value="Predecir" class="btn btn-outline-success btn-lg">
+    </form>
+    {% if scoreval %}
+    <h1 class="display-4">Con el algoritmo {{algoritmo}} La Temperatura máxima en Albury será de: {{scoreval}} C°</h1>
+    {% endif%}
+</body>
+</html>

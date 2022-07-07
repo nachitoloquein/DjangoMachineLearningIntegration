@@ -1,0 +1,1 @@
+<p align="center"><a href="https://www.djangoproject.com" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/7/75/Django_logo.svg" width="400"></a></p>
