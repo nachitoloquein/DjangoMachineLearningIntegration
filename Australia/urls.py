@@ -19,7 +19,6 @@ from django.urls import path
 from core import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path('', views.index, name="test"),
     path('predict', views.predict, name="predict")
 ]
