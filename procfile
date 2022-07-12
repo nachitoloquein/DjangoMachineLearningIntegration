@@ -1,1 +1,1 @@
-web: gunicorn Australia.wsgi --log-file -
+web: gunicorn core.wsgi --log-file -
