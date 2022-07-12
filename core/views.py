@@ -37,8 +37,9 @@ def predict(request):
         temp.append(float(request.POST.get('presion3Val')))
         temp.append(float(request.POST.get('humedad3Val')))
         temp.append(float(request.POST.get('presion9Val')))
+        algoritmoNombre = (request.POST.get('algoritmo'))
         algoritmo = eval(request.POST.get('algoritmo'))
     print(algoritmo)
     scoreval = algoritmo.predict([temp])
-    context={'scoreval':round(scoreval[0],1), 'algoritmo':str(algoritmo)}
+    context={'scoreval':round(scoreval[0],1), 'algoritmo':algoritmoNombre}
     return render(request, 'index.html',context)

@@ -6,10 +6,18 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Predicción de Temperatura máxima</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="icon" href="{% static 'img/icon.ico' %}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
-<body>
+<body class="login-page">
+    <div class="login-box">
+        <div class="login-logo">
+            <a href="#"><b>Albury </b>Predictor</a>
+        </div>
+        <div class="card">
+            <div class="card-body login-card-body">
+              <p class="login-box-msg">Veamos la temperatura máxima</p>
     <form action="predict" method="post">
         {% csrf_token %}
         <div class="form-group"> 
@@ -49,10 +57,13 @@
             <label for="fname">Presión atmosférica 9am: </label>
             <input type="number" min="1000" max="1037" name="presion9Val" value=1004 class="form-control">
         </div>
-        <input type="submit" value="Predecir" class="btn btn-outline-success btn-lg">
+        <input type="submit" value="Predecir" class="btn btn-outline-success">
     </form>
     {% if scoreval %}
-    <h1 class="display-4">Con el algoritmo {{algoritmo}} La Temperatura máxima en Albury será de: {{scoreval}} C°</h1>
+    <h6>Con el algoritmo {{algoritmo}} La Temperatura máxima en Albury será de: {{scoreval}} C°</h6>
     {% endif%}
+</div>
+</div>
+</div>
 </body>
 </html>
